@@ -1,0 +1,27 @@
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  containerRegistry: 'yourContainerRegistry'
+  imageName: 'yourImageName'
+
+stages:
+- stage: Build
+  displayName: 'Build and push Docker image'
+  jobs:
+  - job: Build
+    displayName: 'Build'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Docker@2
+      displayName: 'Build and push Docker image'
+      inputs:
+        command: 'buildAndPush'
+        repository: '$(containerRegistry)/$(imageName)'
+        dockerfile: '**/Dockerfile'
+        context: '.'
+        containerRegistry: 'yourDockerRegistryServiceConnection'
