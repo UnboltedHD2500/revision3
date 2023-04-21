@@ -5,8 +5,8 @@ resources:
 - repo: self
 
 variables:
-  containerRegistry: 'yourContainerRegistry'
-  imageName: 'yourImageName'
+  containerRegistry: 'peckma'
+  imageName: 'pythonmoment'
 
 stages:
 - stage: Build
