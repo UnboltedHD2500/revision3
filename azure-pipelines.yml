@@ -25,4 +25,4 @@ stages:
         repository: '$(containerRegistry)/$(imageName)'
         dockerfile: '**/Dockerfile'
         context: '.'
-        containerRegistry: 'yourDockerRegistryServiceConnection'
+        containerRegistry: 'DockerHub'
