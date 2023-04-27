@@ -6,7 +6,7 @@ resources:
 
 variables:
   containerRegistry: 'peckma'
-  imageName: 'pythonmoment'
+  imageName: 'pythonmoment2'
 
 stages:
 - stage: Build
