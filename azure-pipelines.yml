@@ -1,28 +1,33 @@
+# azure-pipelines.yml
 trigger:
-- main
+  branches:
+    include:
+    - main
 
 resources:
-- repo: self
+  - repo: self
 
 variables:
-  containerRegistry: 'peckma'
-  imageName: 'pythonmoment2'
+  imageName: 'nginxtest1'
+  dockerHubUsername: 'peckma'
+  dockerHubRepo: 'nginxtest1'
 
 stages:
-- stage: Build
-  displayName: 'Build and push Docker image'
+- stage: BuildAndPush
+  displayName: Build and push Docker image
   jobs:
   - job: Build
-    displayName: 'Build'
+    displayName: Build
     pool:
-      name: 'Default'
       vmImage: 'ubuntu-latest'
     steps:
     - task: Docker@2
-      displayName: 'Build and push Docker image'
+      displayName: Build and push Docker image
       inputs:
         command: 'buildAndPush'
-        repository: '$(containerRegistry)/$(imageName)'
+        repository: $(dockerHubUsername)/$(dockerHubRepo)
         dockerfile: '**/Dockerfile'
-        context: '.'
-        containerRegistry: 'DockerHub'
+        containerRegistry: 'dockerreg'
+        tags: |
+          $(imageName):$(Build.BuildId)
+          $(imageName):latest
