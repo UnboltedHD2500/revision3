@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-webapp
+  name: hello-virtualization-deployment
+  labels:
+    app: hello-virtualization
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: python-webapp
+      app: hello-virtualization-label
   template:
     metadata:
       labels:
-        app: python-webapp
+        app: hello-virtualization-label
     spec:
       containers:
-      - name: python-webapp
+      - name: hello-virtualization-container
         image: peckma/hello-virtualization:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
