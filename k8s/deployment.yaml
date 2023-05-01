@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: yourDockerRegistryServiceConnection/nginx
+        image: dockerreg/nginx
         ports:
         - containerPort: 80
