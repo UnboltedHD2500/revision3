@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-virtualization-deployment
-  labels:
-    app: hello-virtualization
+  name: nginx-deployment
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: hello-virtualization-label
+      app: nginx
+  replicas: 3
   template:
     metadata:
       labels:
-        app: hello-virtualization-label
+        app: nginx
     spec:
       containers:
-      - name: hello-virtualization-container
-        image: peckma/hello-virtualization:latest
+      - name: nginx-devops
+        image: your-container-registry/nginx:latest
         ports:
-        - containerPort: 5000
+        - containerPort: 80
