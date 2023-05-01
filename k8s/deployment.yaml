@@ -13,7 +13,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx-devops
-        image: your-container-registry/nginx:latest
+      - name: nginx
+        image: DockerHub/nginx:latest
         ports:
         - containerPort: 80
